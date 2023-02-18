@@ -1,11 +1,11 @@
-#!/bin/ash
+#!/bin/sh
 # https://github.com/step-/gtk-stock-icons2
 # Extends https://forum.porteus.org/viewtopic.php?p=8614#p8614
 # Icon name data: https://developer.gnome.org/gtk3/stable/gtk3-Stock-Items.html
-gtkdialog -c -s >/dev/null << EOW
+${GTKDIALOG:=gtkdialog} -c -s >/dev/null << EOW
 $(
-awk << \EOF '
-  BEGIN { print "<window title=\"gtk stock icons\" icon-name=\"dialog-information\"><vbox><hbox>" }
+awk -v GTKDIALOG="$(basename "$(realpath "${GTKDIALOG%% *}")")" << \EOF '
+  BEGIN { print "<window title=\""GTKDIALOG" stock icons\" icon-name=\"dialog-information\"><vbox><hbox>" }
   { printf "<pixmap icon_size=\"5\" tooltip-text=\"%s\"><input file stock=\"%s\"></input></pixmap>\n", $0, $1 }
   NR % 21 == 0 { print "</hbox><hbox>" }
   END { print "<text><label>\"\"</label></text></hbox><button ok></button></vbox></window>" }
