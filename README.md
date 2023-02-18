@@ -16,3 +16,4 @@ The undelying `gtkdialog` structure is generated with `awk`.
 
 ![main window](gtk-stock-icons2-main-window.png)
 
+[forum discussion](https://forum.puppylinux.com/viewtopic.php?p=81832#p81832)
